@@ -24,22 +24,24 @@ h=0.67
 wde=-1
 Om=0.3
 Ode=0.7
-l=100 #Mpc/h
+#l=100 #Mpc/h
 #Set the cosmological model
 
 cosmo=FlatwCDM(H0=67.0,Om0=0.3,w0=-1.0)
-
+#print(cosmo.Ode0)
 def sub_ang(z):
     d_a=cosmo.angular_diameter_distance(z)
-    y=l / d_a
+    l=100/0.67 #Mpc
+    a=1/(1+z)
+    y=l*a / d_a
     return y
 
-redshift=np.linspace(1,1000,1000)
+redshift=np.linspace(0.1,1000,100000)
 
 plt.figure(0)
-plt.loglog(redshift,sub_ang(redshift))
+plt.semilogx(redshift,sub_ang(redshift))
 plt.xlabel('z')
-plt.ylabel('Angle subtended by BAO')
+plt.ylabel('$\Theta_{sc}$ [$^\circ$]')
 plt.savefig('BAO_angle_z.png',dpi=400,bbox_inches='tight')
 plt.show()
 

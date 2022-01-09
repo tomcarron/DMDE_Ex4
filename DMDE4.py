@@ -40,7 +40,7 @@ redshift=np.linspace(0.1,1000,100000)
 
 plt.figure(0)
 plt.semilogx(redshift,sub_ang(redshift))
-plt.xlabel('z')
+plt.xlabel('$z$')
 plt.ylabel('$\Theta_{sc}$ [$^\circ$]')
 plt.savefig('plots/BAO_angle_z.png',dpi=400,bbox_inches='tight')
 
@@ -73,8 +73,16 @@ print(Lx)
 a) Using the same cosmology parameters as the previous question, plot the X-ray lumi-
 nosity LX vs z. (3 points)
 '''
-
-
+plt.figure(1)
+plt.scatter(z,Lx,s=1,label='Clusters $L_x$ vs $z$')
+#plt.plot(z2,Lum_lim(z2),'red',linestyle='--')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('$z$')
+plt.ylabel('$L_x$ [$erg$ $s^{-1}$]')
+plt.ylim(1e41,1e46)
+plt.savefig('plots/xray_lum.png',dpi=400,bbox_inches='tight')
+plt.legend()
 
 '''
 On the plot above, add the flux limit line (the lowest LX that can be observed for every
@@ -84,20 +92,21 @@ limit line. (3 points)
 def Lum_lim(z):
     fx=5e-12 #erg/s/cm2
     dl=cosmo.luminosity_distance(z).to(u.cm)
-    Lx=fx*4*np.pi*(dl**2)
+    Lx=(fx*4*np.pi*(dl**2))*(1+z)
     return Lx
 
 z2=np.linspace(0,0.7,1000)
 
-plt.figure(1)
-plt.scatter(z,Lx,s=1)
-plt.plot(z2,Lum_lim(z2),'red',linestyle='--')
+plt.figure(2)
+plt.scatter(z,Lx,s=1,label='Clusters $L_x$ vs $z$')
+plt.plot(z2,Lum_lim(z2),'red',linestyle='--',label='Flux limit')
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel('z')
-plt.ylabel('Lx')
+plt.xlabel('$z$')
+plt.ylabel('$L_x$ [$erg$ $s^{-1}$]')
 plt.ylim(1e41,1e46)
-plt.savefig('plots/xray_lum.png',dpi=400,bbox_inches='tight')
+plt.savefig('plots/xray_lum_lim.png',dpi=400,bbox_inches='tight')
+plt.legend()
 
 '''
 c) Do all the clusters appear above the flux limit line? Why is this the case? (2 points)

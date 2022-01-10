@@ -1,4 +1,5 @@
 #Script for DMDE Ex4
+#Author: Tom Carron.
 import numpy as np
 import astropy
 import astropy.constants as const
@@ -115,4 +116,4 @@ plt.show()
 
 
 
-
+#Author Tom Carron.

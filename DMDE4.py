@@ -82,8 +82,9 @@ plt.yscale('log')
 plt.xlabel('$z$')
 plt.ylabel('$L_x$ [$erg$ $s^{-1}$]')
 plt.ylim(1e41,1e46)
-plt.savefig('plots/xray_lum.png',dpi=400,bbox_inches='tight')
 plt.legend()
+plt.savefig('plots/xray_lum.png',dpi=400,bbox_inches='tight')
+
 
 '''
 On the plot above, add the flux limit line (the lowest LX that can be observed for every
@@ -106,8 +107,8 @@ plt.yscale('log')
 plt.xlabel('$z$')
 plt.ylabel('$L_x$ [$erg$ $s^{-1}$]')
 plt.ylim(1e41,1e46)
-plt.savefig('plots/xray_lum_lim.png',dpi=400,bbox_inches='tight')
 plt.legend()
+plt.savefig('plots/xray_lum_lim.png',dpi=400,bbox_inches='tight')
 
 '''
 c) Do all the clusters appear above the flux limit line? Why is this the case? (2 points)
